@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS investments;
+
+CREATE TABLE IF NOT EXISTS investments(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INT NOT NULL,
+  currency VARCHAR(255) NOT NULL,
+  amount INT
+);
