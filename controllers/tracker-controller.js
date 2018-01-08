@@ -82,7 +82,7 @@ controller.create = (req,res) => {
 controller.destroy = (req,res) => {
   Currency.destroy(req.params.id)
   .then(() => {
-    res.redirect()
+    res.redirect(`/tracker/${req.params.username}`)
   })
 };
 
