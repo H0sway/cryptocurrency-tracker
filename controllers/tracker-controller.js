@@ -1,5 +1,6 @@
 const Currency = require('../models/currency');
 const Investment =  require('../models/investment');
+const User = rrequire('../models/user');
 const axios = require('axios');
 
 const controller = {};
