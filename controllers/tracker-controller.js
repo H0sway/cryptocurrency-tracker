@@ -10,15 +10,15 @@ controller.login = (req,res) => {
 
 controller.tracker = (req,res) => {
   Currency.findAll()
-  .then(currencies => {
-    currencies.forEach( currency => {
+  .then((cryptos) => {
+    currencies.forEach((crypto) => {
       axios({
         method: 'get',
         url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
   });
     });
   })
-  .then((currencies => {
+  .then((currencies) => {
     res.render('tracker/tracker', {currencies: currencies});
   })
   .catch((err) => {
@@ -28,14 +28,24 @@ controller.tracker = (req,res) => {
 
 controller.show = (req,res) => {
   Currency.findById(req.params.id)
-  .then(currency => {
+  .then((currency) => {
     axios({
       method: 'get',
       url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
     });
   })
-  .then(currency => {
-    res.render('tracker/currency', {currency: currency});
+  .then((currency) => {
+    if(currency.investment_id) {
+      Investment.findById(currency.investment_id)
+      .then(investment => {
+        res.render('tracker/currency', {currency: currency, investment: investment});
+      })
+      .catch((err) => {
+    res.status(500).json(err)
+  });
+    } else {
+      res.render('tracker/currency', {currency: currency})
+    }
   })
   .catch((err) => {
     res.status(500).json(err)
@@ -44,7 +54,7 @@ controller.show = (req,res) => {
 
 controller.edit = (req,res) => {
   Investment.findById(req.params.id)
-  .then(investment => {
+  .then((investment) => {
     res.render('tracker/edit', {investment: investment});
   })
   .catch((err) => {
