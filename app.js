@@ -46,7 +46,7 @@ app.use('/auth', authRouter);
 const authHelpers = require('./services/auth/auth-helpers');
 app.use(authHelpers.loginRequired)
 
-app.use('/tracker', require('.routes/tracker-routes'));
+app.use('/tracker', require('./routes/tracker-routes'));
 
 app.get('*', (req,res) => {
   res.status(404).json({

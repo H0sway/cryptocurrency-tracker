@@ -15,6 +15,7 @@
   "author": "Joshua K. Russell",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.17.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
