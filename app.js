@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 app.use(logger('dev'));
+app.use(express.static('public'));
 
 // Set the views
 app.set('view engine', 'ejs');
