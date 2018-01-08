@@ -42,18 +42,44 @@ controller.show = (req,res) => {
   });
 };
 
-controller.new = (req,res) => {
-  Currency.create({
-    user_id: req.body.user_id,
-    currency_id: req.body.currency_id
-  })
-  .then((data) => {
-    res.redirect('tracker/tracker');
+controller.edit = (req,res) => {
+  Investment.findById(req.params.id)
+  .then(investment => {
+    res.render('tracker/edit', {investment: investment});
   })
   .catch((err) => {
     res.status(500).json(err)
   });
 };
 
+controller.update = (req,res) => {
+  Investment.update({amount: req.body.amount}, req.params.id)
+  .then(() => {
+    res.redirect(`/tracker/${req.params.username}`);
+  })
+  .catch((err) => {
+    res.status(500).json(err)
+  });
+};
+
+controller.new = (req,res) => {
+  Currency.create({
+    user_id: req.body.user_id,
+    currency_id: req.body.currency_id
+  })
+  .then((data) => {
+    res.redirect(`/tracker/${req.params.username}`);
+  })
+  .catch((err) => {
+    res.status(500).json(err)
+  });
+};
+
+controller.destroy = (req,res) => {
+  Currency.destroy(req.params.id)
+  .then(() => {
+    res.redirect()
+  })
+};
 
 module.exports = controller;
