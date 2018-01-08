@@ -5,7 +5,11 @@
   <title>Register an Account</title>
 </head>
 <body>
-  <form method="POST" action="/auth/register">
+  <header>
+    <h1>Welcome!</h1>
+    <h3>Please enter your desired username and password along with your e-mail so we can spam the crap out of you</h3>
+  </header>
+  <form method="POST" action="/auth/register" class="register">
     <input name="username" type="text" placeholder="username" required />
     <input name="email" type="email" placeholder="email" required />
     <input name="password" type="password" placeholder="password" required />
