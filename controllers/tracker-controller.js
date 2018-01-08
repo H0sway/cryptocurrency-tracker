@@ -1,13 +1,9 @@
 const Currency = require('../models/currency');
 const Investment =  require('../models/investment');
-const User = rrequire('../models/user');
+const User = require('../models/user');
 const axios = require('axios');
 
 const controller = {};
-
-controller.login = (req,res) => {
-  res.redirect(`/tracker/${req.params.username}`);
-};
 
 controller.tracker = (req,res) => {
   Currency.findAll()
