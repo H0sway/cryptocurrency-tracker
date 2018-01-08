@@ -14,7 +14,7 @@ Features I'm planning on implementing for the app along with what I'm prioritizi
 Tracking how long it'll take for me to complete my various features.
 
 | Componant                                     | Priority | Estimated Time | Actual Time |
--------------------------------------------------------------------------------------------
+------------------------------------------------|----------|----------------|-------------|
 | Create all the views                          | H        | 2H             |             |
 | Store currencies added by users               | H        | 4H             |             |
 | Show current value of stored currencies       | H        | 8H             |             |
