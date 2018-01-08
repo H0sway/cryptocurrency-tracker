@@ -19,10 +19,20 @@ controller.tracker = (req,res) => {
     });
   })
   .then((currencies) => {
-    res.render('tracker/tracker', {currencies: currencies});
+    if(currency.investment_id) {
+      Investment.findAll()
+      .then((investments) => {
+        res.render('tracker/tracker', {currencies: currencies, investments: investments});
+      })
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+    } else {
+      res.render('tracker/tracker', {currencies: currencies});
+    }
   })
   .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
 };
 
@@ -41,14 +51,14 @@ controller.show = (req,res) => {
         res.render('tracker/currency', {currency: currency, investment: investment});
       })
       .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
     } else {
       res.render('tracker/currency', {currency: currency})
     }
   })
   .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
 };
 
@@ -58,7 +68,7 @@ controller.edit = (req,res) => {
     res.render('tracker/edit', {investment: investment});
   })
   .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
 };
 
@@ -68,7 +78,7 @@ controller.update = (req,res) => {
     res.redirect(`/tracker/${req.params.username}`);
   })
   .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
 };
 
@@ -81,11 +91,14 @@ controller.create = (req,res) => {
     user_id: req.body.user_id,
     currency_id: req.body.currency_id
   })
+  Investment.create ({
+    amount: req.body.amount
+  })
   .then((data) => {
     res.redirect('tracker/tracker');
   })
   .catch((err) => {
-    res.status(500).json(err)
+    res.status(500).json(err);
   });
 };
 
