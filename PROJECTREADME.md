@@ -13,23 +13,15 @@ Features I'm planning on implementing for the app along with what I'm prioritizi
 ## Timeframes
 Tracking how long it'll take for me to complete my various features.
 
-| Componant        | Priority | Estimated Time | Actual Time |
---------------------------------------------------------------
-| Create all the   | H        | 2H             |             |
-| views            |          |                |             |
---------------------------------------------------------------
-| Store currencies | H        | 4H             |             |
-| added by users   |          |                |             |
---------------------------------------------------------------
-| Show current     | H        | 8H             |             |
-| value of stored  |          |                |             |
-| currencies       |          |                |             |
---------------------------------------------------------------
-| Individual user  | M        | 8H             |             |
-| accounts to track|          |                |             |
-| investments      |          |                |             |
---------------------------------------------------------------
-| Page that tracks | L        | 4H             |             |
-| the top X        |          |                |             |
-| currencies       |          |                |             |
---------------------------------------------------------------
+| Componant                                     | Priority | Estimated Time | Actual Time |
+-------------------------------------------------------------------------------------------
+| Create all the views                          | H        | 2H             |             |
+-------------------------------------------------------------------------------------------
+| Store currencies added by users               | H        | 4H             |             |
+-------------------------------------------------------------------------------------------
+| Show current value of stored currencies       | H        | 8H             |             |
+-------------------------------------------------------------------------------------------
+| Individual user accounts to track investments | M        | 8H             |             |
+-------------------------------------------------------------------------------------------
+| Page that tracks the top X currencies         | L        | 4H             |             |
+-------------------------------------------------------------------------------------------
