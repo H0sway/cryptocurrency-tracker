@@ -5,7 +5,7 @@ const axios = require('axios');
 const controller = {};
 
 controller.login = (req,res) => {
-  res.render('tracker/login');
+  res.redirect(`/tracker/${req.params.username}`);
 };
 
 controller.tracker = (req,res) => {
