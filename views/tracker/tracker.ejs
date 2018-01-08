@@ -5,5 +5,22 @@
   <title>Track Your Crypto Investments</title>
 </head>
 <body>
+  <h1>Your Crytocurrency Investments</h1>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Value (USD)</th>
+      <th>Value (BTC)</th>
+      <th>Amount</th>
+<% currencies.forEach(currency => { %>
+    <tr>
+      <th><%= crypto.name %></th>
+      <th><%= crypto.price_usd %></th>
+      <th><%= crypto.price_btc %></th>
+      <th><%= investment.amount %></th>
+    </tr>
+<% }) %>
+</table>
 </body>
 </html>
