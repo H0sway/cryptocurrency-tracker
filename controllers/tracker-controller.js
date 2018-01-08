@@ -62,13 +62,17 @@ controller.update = (req,res) => {
   });
 };
 
-controller.new = (req,res) => {
+controller.add = (req,res) => {
+  res.render('/tracker/add');
+}
+
+controller.create = (req,res) => {
   Currency.create({
     user_id: req.body.user_id,
     currency_id: req.body.currency_id
   })
   .then((data) => {
-    res.redirect(`/tracker/${req.params.username}`);
+    res.redirect('tracker/tracker');
   })
   .catch((err) => {
     res.status(500).json(err)
