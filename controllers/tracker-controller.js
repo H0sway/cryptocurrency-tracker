@@ -5,6 +5,21 @@ const axios = require('axios');
 
 const controller = {};
 
+controller.home = (req,res) => {
+  axios({
+    method: 'get',
+    url: `https://api.coinmarketcap.com/v1/ticker/?limit=20`
+  })
+  .then((cryptos) => {
+    res.render('tracker/table', {
+      cryptos: cryptos.data
+    });
+  })
+  .catch((err) => {
+    res.status(500).json(err);
+  });
+};
+
 controller.tracker = (req,res) => {
   Currency.findAll()
   .then((cryptos) => {

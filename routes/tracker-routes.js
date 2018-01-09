@@ -2,6 +2,7 @@ const express = require('express');
 const Router = express.Router();
 const controller = require('../controllers/tracker-controller');
 
+Router.get('/', controller.home);
 Router.get('/:username', controller.tracker);
 Router.get('/:username/new', controller.add);
 Router.get('/:username/:currency_id', controller.show);
