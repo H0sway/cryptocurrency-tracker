@@ -6,14 +6,18 @@ const axios = require('axios');
 const controller = {};
 
 controller.home = (req,res) => {
-  axios({
+  User.findByUserName(req.params.username)
+  .then((user) => {
+    axios({
     method: 'get',
     url: `https://api.coinmarketcap.com/v1/ticker/?limit=20`
-  })
-  .then((cryptos) => {
-    res.render('tracker/table', {
-      cryptos: cryptos.data
-    });
+    })
+    .then((cryptos) => {
+      res.render('tracker/table', {
+        cryptos: cryptos.data,
+        user: user
+      });
+    })
   })
   .catch((err) => {
     res.status(500).json(err);

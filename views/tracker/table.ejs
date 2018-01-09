@@ -9,29 +9,29 @@
   <h1>Top 20 CryptoCurrencies</h1>
   <table class="topcryptos">
     <tr>
-      <th class="toprow">Rank</th>
-      <th class="toprow">Name</th>
-      <th class="toprow">Value (USD)</th>
-      <th class="toprow">Value (BTC)</th>
-      <th class="toprow">Market Cap</th>
-      <th class="toprow">Available Supply</th>
-      <th class="toprow">Percent Change (7 Days)</th>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Value (USD)</th>
+      <th>Value (BTC)</th>
+      <th>Market Cap</th>
+      <th>Available Supply</th>
+      <th>Percent Change (7 Days)</th>
     </tr>
   <% cryptos.forEach(crypto => { %>
     <tr>
-      <td class="row"><%= crypto.rank %></td>
-      <td class="row"><%= crypto.name %></td>
-      <td class="row">$<%= crypto.price_usd %></td>
-      <td class="row"><%= crypto.price_btc %></td>
-      <td class="row">$<%= crypto.market_cap_usd %></td>
-      <td class="row"><%= crypto.available_supply %></td>
-      <td class="row"><%= crypto.percent_change_7d %>%</td>
+      <td><%= crypto.rank %></td>
+      <td><%= crypto.name %></td>
+      <td>$<%= crypto.price_usd %></td>
+      <td><%= crypto.price_btc %></td>
+      <td>$<%= crypto.market_cap_usd %></td>
+      <td><%= crypto.available_supply %></td>
+      <td><%= crypto.percent_change_7d %>%</td>
     </tr>
   <% }) %>
   </table>
 
   <div class="tracker">
-    <a href=`/tracker/${user.username}`>Your Crypto Tracker</a>
+    <a href="<%= `/tracker/${user.username}` %>">Your Crypto Tracker</a>
   </div>
 
 </body>
