@@ -14,6 +14,7 @@
       <th>Value (USD)</th>
       <th>Value (BTC)</th>
       <th>Amount</th>
+    </tr>
 <% currencies.forEach(currency => { %>
     <tr>
       <th><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>

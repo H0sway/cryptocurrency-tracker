@@ -3,10 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Top 20 Currencies</title>
-  <% include ../partials/head %>
 </head>
 <body>
   <h1>Top 20 CryptoCurrencies</h1>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Value (USD)</th>
+      <th>Value (BTC)</th>
+      <th>Market Cap</th>
+      <th>Available Supply</th>
+      <th>Percent Change (7 Days)</th>
+    </tr>
+  <% cryptos.forEach(crypto => { %>
+    <tr>
+      <th><%= crypto.rank %></th>
+      <th><%= crypto.name %></th>
+      <th><%= crypto.price_usd %></th>
+      <th><%= crypto.price_btc %></th>
+      <th><%= crypto.market_cap_usd %></th>
+      <th><%= crypto.available_supply %></th>
+      <th><%= crypto.percent_change_7d %></th>
+    </tr>
+  <% }) %>
+  </table>
+
+  <a class="tracker" href=`/tracker/${user.username}`>Your Crypto Tracker</a>
 
 </body>
 </html>
