@@ -8,6 +8,12 @@ User.findByUserName = (userName) => {
     `, [userName])
 };
 
+User.findById = (id) => {
+  return db.oneOrNone(`
+    SELECT * FROM users WHERE id = $1
+    `, [id])
+};
+
 User.create = (user) => {
   return db.one(`
     INSERT INTO users

@@ -6,23 +6,19 @@ const axios = require('axios');
 const controller = {};
 
 controller.home = (req,res) => {
-  User.findByUserName(req.params.username)
-  .then((user) => {
-    axios({
+  axios({
     method: 'get',
     url: `https://api.coinmarketcap.com/v1/ticker/?limit=20`
-    })
-    .then((cryptos) => {
-      res.render('tracker/table', {
-        cryptos: cryptos.data,
-        user: user
-      });
-    })
+  })
+  .then((cryptos) => {
+    res.render('tracker/table', {
+      cryptos: cryptos.data
+    });
   })
   .catch((err) => {
     res.status(500).json(err);
   });
-};
+}
 
 controller.tracker = (req,res) => {
   Currency.findAll()
@@ -63,7 +59,7 @@ controller.show = (req,res) => {
   .then((currency) => {
     if(currency.investment_id) {
       Investment.findById(currency.investment_id)
-      .then(investment => {
+      .then((investment) => {
         res.render('tracker/currency', {currency: currency, investment: investment});
       })
       .catch((err) => {
