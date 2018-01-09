@@ -17,10 +17,10 @@
     </tr>
 <% currencies.forEach(currency => { %>
     <tr>
-      <th><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>
-      <th><%= crypto.price_usd %></th>
-      <th><%= crypto.price_btc %></th>
-      <th><%= investment.amount %></th>
+      <td><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>
+      <td><%= crypto.price_usd %></td>
+      <td><%= crypto.price_btc %></td>
+      <td><%= investment.amount %></td>
     </tr>
 <% }) %>
 </table>

@@ -1,9 +1,48 @@
 body {
   margin: 0 auto;
-  background-color: #0f0f0f;
 }
 
-header {
+h1 {
+  margin: 15px auto;
   text-align: center;
-  color: #ffffff;
+}
+
+.topcryptos {
+  margin: 15px auto;
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+.topcryptos th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.topcryptos td {
+  text-align: center;
+  border: 1px solid black;
+  background-color: #a6a6a6;
+  padding: 5px;
+}
+
+.topcryptos td:hover {
+  background-color: #cccccc;
+}
+
+.tracker {
+  margin: 20px auto;
+  max-height: 80px;
+  max-width: 140px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15%;
+  background-color: #334d00;
+}
+
+.tracker a {
+  color: #ffff66;
+}
+
+.tracker a:hover {
+  color: #cccc00;
 }
