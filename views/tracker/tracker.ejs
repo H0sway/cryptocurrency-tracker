@@ -8,21 +8,35 @@
 <body>
   <h1>Your Crytocurrency Investments</h1>
 
-  <table>
+  <div class="new">
+    <a href="/tracker/new">Add a new currency</a>
+  </div>
+
+  <table class="personal">
     <tr>
+      <th>Rank</th>
       <th>Name</th>
       <th>Value (USD)</th>
       <th>Value (BTC)</th>
-      <th>Amount</th>
+      <th>Amount Owned</th>
+      <th>Market Cap</th>
+      <th>Available Supply</th>
+      <th>Percent Change (7 Days)</th>
     </tr>
-<% currencies.forEach(currency => { %>
-    <tr>
-      <td><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>
-      <td><%= crypto.price_usd %></td>
-      <td><%= crypto.price_btc %></td>
-      <td><%= investment.amount %></td>
-    </tr>
-<% }) %>
-</table>
+    <% if (currencies) { %>
+      <% currencies.forEach(currency => { %>
+        <tr>
+          <td><%= crypto.rank %></td>
+          <td><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>
+          <td><%= crypto.price_usd %></td>
+          <td><%= crypto.price_btc %></td>
+          <td><%= investment.amount %></td>
+          <td>$<%= crypto.market_cap_usd %></td>
+          <td><%= crypto.available_supply %></td>
+          <td><%= crypto.percent_change_7d %>%</td>
+        </tr>
+      <% }) %>
+    <% } %>
+  </table>
 </body>
 </html>

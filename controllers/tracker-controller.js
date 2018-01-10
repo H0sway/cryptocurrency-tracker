@@ -18,35 +18,52 @@ controller.home = (req,res) => {
   .catch((err) => {
     res.status(500).json(err);
   });
-}
+};
 
 controller.tracker = (req,res) => {
   Currency.findAll()
-  .then((cryptos) => {
-    if(currencies.id) {
-      currencies.forEach((crypto) => {
+  .then((currencies) => {
+    console.log('inside currency.findall')
+    if(currencies.length) {
+      currencies.forEach((currency, index) => {
+        console.log('looping', index)
         axios({
           method: 'get',
-          url: `https://api.coinmarketcap.com/v1/ticker/?limit=20`
+          url: `https://api.coinmarketcap.com/v1/ticker/${req.params.currency_id}`
         });
       })
-      .then((currencies) => {
+      .then((cryptos) => {
+        console.log('inside api call')
         if (currency.investment_id) {
           Investment.findAll()
           .then((investments) => {
+            console.log('inside investments')
             res.render('tracker/tracker', {
               cryptos: cryptos.data,
               currencies: currencies,
               investments: investments
-            })
+            });
           })
           .catch((err) => {
+            console.log('inside investments error', err)
             res.status(500).json(err);
            });
         } else {
-
+          res.render('tracker/tracker', {
+            cryptos: cryptos.data,
+            currencies: currencies
+          });
         }
       })
+      .catch((err) => {
+        console.log('inside api error', err)
+        res.status(500).json(err);
+      });
+    } else {
+      console.log('found nothing')
+      res.render('tracker/tracker', {
+        currencies: undefined
+      });
     }
   })
 };
@@ -97,20 +114,28 @@ controller.update = (req,res) => {
   });
 };
 
-controller.add = (req,res) => {
-  res.render('/tracker/add');
-}
+controller.new = (req,res) => {
+  res.render('tracker/add');
+};
 
-controller.create = (req,res) => {
+controller.add = (req,res) => {
   Currency.create({
-    user_id: req.body.user_id,
-    currency_id: req.body.currency_id
+    user_id: req.user.id,
+    currency_id: req.body.currency_id,
+    investment_id: investment.id
   })
-  Investment.create ({
-    amount: req.body.amount
-  })
-  .then((data) => {
-    res.redirect('tracker/tracker');
+  .then((currency) => {
+    Investment.create({
+      user_id: req.user.id,
+      currency: req.body.currency_id,
+      amount: req.body.amount
+    })
+    .then((investment) => {
+      res.redirect('/tracker/tracker');
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
   })
   .catch((err) => {
     res.status(500).json(err);

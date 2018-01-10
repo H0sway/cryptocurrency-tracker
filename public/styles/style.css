@@ -40,9 +40,47 @@ h1 {
 }
 
 .tracker a {
+  text-decoration: none;
   color: #ffff66;
 }
 
 .tracker a:hover {
   color: #cccc00;
+}
+
+.personal {
+  margin: 15px auto;
+  border: 3px solid black;
+  border-collapse: collapse;
+}
+
+.new {
+  margin: 10px auto;
+  max-height: 40px;
+  max-width: 100px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10%;
+  background-color: #000080;
+}
+
+.new a {
+  color: #33ff33;
+  text-decoration: none;
+}
+
+.personal th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.personal td {
+  text-align: center;
+  border: 1px solid black;
+  background-color: #a6a6a6;
+  padding: 5px;
+}
+
+.personal td:hover {
+  background-color: #cccccc;
 }

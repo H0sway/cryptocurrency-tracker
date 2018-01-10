@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Track Your Crypto Investments</title>
+  <title>Add New Currency</title>
   <% include ../partials/head %>
 </head>
 <body>
+  <h1>Add A Currency</h1>
+  <h3>Add in the name of which currency you'd like to track. If you'd like, you can include an investment as well.</h3>
+
+  <form action="/tracker/tracker" method="POST">
+    <label for="currency_id">Crypto Name</label>
+    <input id="currency_id" type="text" name="currency_id"/>
+
+    /br
+
+    <label for="amount">Amount</label>
+    <input id="amount" type="number" name="amount"/>
+
+    /br
+
+    <input type="submit" value="Add New Currency"/>
+  </form>
 </body>
 </html>

@@ -15,7 +15,7 @@ Currency.findById = (id) => {
 
 Currency.create = (currency) => {
   return db.one(`
-    INSERT INTO currencies (user_id, currency) VALUES ($1, $2) RETURNING *
+    INSERT INTO currencies (user_id, currency, investment_id) VALUES ($1, $2, $3) RETURNING *
     `[currency.user_id, currency.currency]);
 };
 
