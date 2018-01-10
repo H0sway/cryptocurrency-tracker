@@ -23,29 +23,32 @@ controller.home = (req,res) => {
 controller.tracker = (req,res) => {
   Currency.findAll()
   .then((cryptos) => {
-    currencies.forEach((crypto) => {
-      axios({
-        method: 'get',
-        url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
-  });
-    });
-  })
-  .then((currencies) => {
-    if(currency.investment_id) {
-      Investment.findAll()
-      .then((investments) => {
-        res.render('tracker/tracker', {currencies: currencies, investments: investments});
+    if(currencies.id) {
+      currencies.forEach((crypto) => {
+        axios({
+          method: 'get',
+          url: `https://api.coinmarketcap.com/v1/ticker/?limit=20`
+        });
       })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-    } else {
-      res.render('tracker/tracker', {currencies: currencies});
+      .then((currencies) => {
+        if (currency.investment_id) {
+          Investment.findAll()
+          .then((investments) => {
+            res.render('tracker/tracker', {
+              cryptos: cryptos.data,
+              currencies: currencies,
+              investments: investments
+            })
+          })
+          .catch((err) => {
+            res.status(500).json(err);
+           });
+        } else {
+
+        }
+      })
     }
   })
-  .catch((err) => {
-    res.status(500).json(err);
-  });
 };
 
 controller.show = (req,res) => {
