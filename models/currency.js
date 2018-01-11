@@ -7,7 +7,6 @@ Currency.findAll = (user_id) => {
     JOIN users ON c.user_id = users.id
     JOIN investments ON c.investment_id = investments.id
     WHERE c.user_id = $1
-    ORDER BY c.id ASC
     `,[user_id]);
 };
 

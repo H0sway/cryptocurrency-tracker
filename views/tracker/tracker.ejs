@@ -6,7 +6,7 @@
   <% include ../partials/head %>
 </head>
 <body>
-  <h1>Your Crytocurrency Investments</h1>
+  <h1>Your CryptoCurrency Investments</h1>
 
   <div class="links">
     <div class="link">
@@ -33,7 +33,7 @@
         <tr>
           <td><%= crypto.rank %></td>
           <td><a href="<%= `/tracker/${currency.currency_id}` %>"> <%= crypto.name %> </a></th>
-          <td><%= crypto.price_usd %></td>
+          <td>$<%= crypto.price_usd %></td>
           <td><%= crypto.price_btc %></td>
           <td><%= investment.amount %></td>
           <td>$<%= crypto.market_cap_usd %></td>
