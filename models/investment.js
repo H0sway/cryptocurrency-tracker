@@ -3,7 +3,11 @@ const Investment = {};
 
 Investment.findAll = (user_id) => {
   return db.query(`
-    SELECT * FROM investments WHERE user_id = $1 ORDER BY id ASC
+    SELECT * FROM investments AS i
+    JOIN users ON i.user_id = users.id
+    JOIN currencies ON i.currency = currencies.currency_id
+    WHERE i.user_id = $1
+    ORDER BY i.id ASC
     `,[user_id]);
 };
 

@@ -69,6 +69,10 @@ h1 {
   padding: 5px;
 }
 
+.personal td:hover {
+  background-color: #4d4d4d;
+}
+
 .links {
   margin: 0 auto;
   max-width: 280px;
@@ -85,7 +89,7 @@ h1 {
   text-align: center;
   padding: 10px;
   border-radius: 10%;
-  background-color: #000080;
+  background-color: #2d2d86;
 }
 
 .link a {
@@ -93,18 +97,6 @@ h1 {
   text-decoration: none;
 }
 
-.personal th {
-  border: 1px solid black;
-  padding: 5px;
-}
-
-.personal td {
-  text-align: center;
-  border: 1px solid black;
-  background-color: #a6a6a6;
-  padding: 5px;
-}
-
-.personal td:hover {
-  background-color: #cccccc;
+.link a:hover {
+  color: #ccff66;
 }

@@ -5,12 +5,12 @@ function comparePass(userPassword, databasePassword) {
 };
 
 function loginRedirect(req,res,next) {
-  if (req.user) return res.redirect(`/tracker/${req.body.username}`);
+  if (req.user) return res.redirect(`/tracker`);
   return next();
 };
 
 function loginRequired(req,res,next) {
-  if(!req.user) return res.redirect('auth/login');
+  if(!req.user) return res.redirect('/auth/login');
   return next();
 };
 
