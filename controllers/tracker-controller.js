@@ -73,25 +73,9 @@ controller.show = (req,res) => {
   .then((currency) => {
     axios({
       method: 'get',
-      url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
+      url: `https://api.coinmarketcap.com/v1/ticker/${req.params.currency_id}`
     });
   })
-  .then((currency) => {
-    if(currency.investment_id) {
-      Investment.findById(currency.investment_id)
-      .then((investment) => {
-        res.render('tracker/currency', {currency: currency, investment: investment});
-      })
-      .catch((err) => {
-    res.status(500).json(err);
-  });
-    } else {
-      res.render('tracker/currency', {currency: currency})
-    }
-  })
-  .catch((err) => {
-    res.status(500).json(err);
-  });
 };
 
 controller.edit = (req,res) => {
@@ -115,20 +99,21 @@ controller.update = (req,res) => {
 };
 
 controller.new = (req,res) => {
+  console.log('rendering add.ejs')
   res.render('tracker/add');
 };
 
 controller.add = (req,res) => {
-  Currency.create({
+  Investment.create({
+    user_id: req.user.id,
+    currency: req.body.currency_id,
+    amount: req.body.amount
+  })
+  .then((currency) => {
+    Currency.create({
     user_id: req.user.id,
     currency_id: req.body.currency_id,
     investment_id: investment.id
-  })
-  .then((currency) => {
-    Investment.create({
-      user_id: req.user.id,
-      currency: req.body.currency_id,
-      amount: req.body.amount
     })
     .then((investment) => {
       res.redirect('/tracker/tracker');
