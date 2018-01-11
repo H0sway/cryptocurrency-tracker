@@ -1,0 +1,110 @@
+body {
+  margin: 0 auto;
+  background-color: #000000;
+  color: #4dffff;
+}
+
+h1 {
+  margin: 15px auto;
+  text-align: center;
+}
+
+.topcryptos {
+  margin: 15px auto;
+  border: 3px solid #4dffff;
+  border-collapse: collapse;
+}
+
+.topcryptos th {
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.topcryptos td {
+  text-align: center;
+  border: 1px solid #4dffff;
+  background-color: #000000;
+  padding: 5px;
+}
+
+.topcryptos td:hover {
+  background-color: #4d4d4d;
+}
+
+.tracker {
+  margin: 20px auto;
+  max-height: 80px;
+  max-width: 140px;
+  text-align: center;
+  padding: 10px;
+  border: 3px solid #4dffff;
+  border-radius: 15%;
+  background-color: #79ff4d;
+}
+
+.tracker a {
+  text-decoration: none;
+  color: #0000cc;
+}
+
+.tracker a:hover {
+  color: #cccc00;
+}
+
+.personal {
+  margin: 15px auto;
+  border: 3px solid #4dffff;
+  border-collapse: collapse;
+}
+
+.personal th {
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.personal td {
+  text-align: center;
+  border: 1px solid #4dffff;
+  background-color: #000000;
+  padding: 5px;
+}
+
+.links {
+  margin: 0 auto;
+  max-width: 280px;
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.link {
+  margin: 10px auto;
+  max-height: 40px;
+  max-width: 100px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10%;
+  background-color: #000080;
+}
+
+.link a {
+  color: #33ff33;
+  text-decoration: none;
+}
+
+.personal th {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.personal td {
+  text-align: center;
+  border: 1px solid black;
+  background-color: #a6a6a6;
+  padding: 5px;
+}
+
+.personal td:hover {
+  background-color: #cccccc;
+}
