@@ -3,10 +3,8 @@ const Currency = {};
 
 Currency.findAll = (user_id) => {
   return db.query(`
-    SELECT * FROM currencies AS c
-    JOIN users ON c.user_id = users.id
-    JOIN investments ON c.investment_id = investments.id
-    WHERE c.user_id = $1
+    SELECT * FROM currencies
+    WHERE user_id = $1
     `,[user_id]);
 };
 

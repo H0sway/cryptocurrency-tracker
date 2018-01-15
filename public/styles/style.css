@@ -12,6 +12,7 @@ h1 {
 .topcryptos {
   margin: 15px auto;
   border: 3px solid #4dffff;
+  background-color: #000000;
   border-collapse: collapse;
 }
 
@@ -23,7 +24,6 @@ h1 {
 .topcryptos td {
   text-align: center;
   border: 1px solid #4dffff;
-  background-color: #000000;
   padding: 5px;
 }
 
