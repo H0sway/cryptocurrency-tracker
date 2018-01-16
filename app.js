@@ -8,7 +8,7 @@ const session = require('express-session');
 const passport = require('passport');
 const logger = require('morgan');
 const path = require('path');
-// const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 require('dotenv').config();
 
@@ -55,6 +55,6 @@ app.get('*', (req,res) => {
   });
 });
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Live on port 3000 but also in your hearts`);
+app.listen(PORT, () => {
+  console.log(`Live on port ${PORT} but also in your hearts`);
 });
