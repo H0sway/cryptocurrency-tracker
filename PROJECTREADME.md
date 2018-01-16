@@ -75,6 +75,11 @@ This piece of code is what renders the individual currency page for each user's 
 * SQL Doesn't accept decimals
 * Users need to enter an investment amount, should be optional. Current fix is to have the placeholder value be 0.
 
+## User Stories: 
+* As a crypto investor I want an app that tracks the value of currencies I've invested in or plan on investing in. 
+* As a potential investor in cryptocurrencies I want an app that can show me the relevant information I need on currencies to make a decision.
+* As someone who knows little or nothing about cryptocurrencies I want an app that can show me details about a currency's value in a way I can understand. 
+
 ## Download and Run on LocalHost:
 
 1. Fork the repository to your own Github account (or similar).
