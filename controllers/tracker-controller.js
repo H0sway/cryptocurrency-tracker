@@ -93,7 +93,7 @@ controller.update = (req,res) => {
       user_id: req.user.id,
       currency: currency.currency_id,
       amount: req.body.amount,
-    }, req.params.currency_id)
+    }, currency.currency_id)
     .then(() => {
       res.redirect(`/tracker/tracker/${req.params.id}`);
     })
