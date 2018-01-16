@@ -20,7 +20,7 @@
 
   <form action="<%= `/tracker/tracker/${currency.id}?_method=PUT` %>" method="POST">
     <label for="amount">Amount Invested</label>
-    <input id="amount" type="number" step="any" name="amount" />
+    <input id="amount" type="number" step="any" name="amount" value="<%= investment.amount %>" />
 
     <input type="submit" value="Finished" />
 
