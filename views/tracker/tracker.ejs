@@ -23,7 +23,7 @@
     </tr>
     <% currencies.forEach((currency) => { %>
     <tr>
-      <td><a href="<%= `/tracker/tracker/$currency.currency_id` %>"><%= currency.currency_id %></a></td>
+      <td><a href=" /tracker/tracker/<%=currency.id%> "><%= currency.currency_id %></a></td>
     </tr>
     <% }) %>
   </table>

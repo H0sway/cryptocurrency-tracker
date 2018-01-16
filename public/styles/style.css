@@ -9,6 +9,10 @@ h1 {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .topcryptos {
   margin: 15px auto;
   border: 3px solid #4dffff;
@@ -69,6 +73,10 @@ h1 {
   padding: 5px;
 }
 
+.personal td a {
+    color: #4dffff;
+}
+
 .personal td:hover {
   background-color: #4d4d4d;
 }
@@ -100,4 +108,22 @@ h1 {
 
 .link a:hover {
   color: #ccff66;
+}
+
+.currency {
+  margin: 15px auto;
+  border: 3px solid #4dffff;
+  border-collapse: collapse;
+}
+
+.currency th {
+  border: 1px solid #4dffff;
+  padding: 5px;
+}
+
+.currency td {
+  text-align: center;
+  border: 1px solid #4dffff;
+  background-color: #000000;
+  padding: 5px;
 }

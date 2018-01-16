@@ -9,13 +9,17 @@
 
   <h1> Your Investment </h1>
 
-  <div class="tracker">
-    <a href="/tracker/tracker">Your Crypto Tracker</a>
+  <div class="links">
+    <div class="link">
+      <a href="/tracker/tracker">Your Crypto Tracker</a>
+    </div>
+    <div class="link">
+      <a href="/tracker/tracker/<%= currency.id %>/edit">Edit/Add Investment</a>
+    </div>
   </div>
 
-  <table>
+  <table class="currency">
     <tr>
-      <th>Rank</th>
       <th>Rank</th>
       <th>Name</th>
       <th>Value (USD)</th>
@@ -26,20 +30,20 @@
       <th>Percent Change (7 Days)</th>
     </tr>
     <tr>
-      <td><%= crypto.rank %></td>
-      <td><%= crypto.name %></td>
-      <td>$<%= crypto.price_usd %></td>
-      <td><%= crypto.price_btc %></td>
+      <td><%= crypto[0].rank %></td>
+      <td><%= crypto[0].name %></td>
+      <td>$<%= crypto[0].price_usd %></td>
+      <td><%= crypto[0].price_btc %></td>
       <td>
 
       <% if (investment) { %>
-         $ <%= investment.amount %>
+         <%= investment.amount %>
       <% } %>
 
       </td>
-      <td>$<%= crypto.market_cap_usd %></td>
-      <td><%= crypto.available_supply %></td>
-      <td><%= crypto.percent_change_7d %>%</td>
+      <td>$<%= crypto[0].market_cap_usd %></td>
+      <td><%= crypto[0].available_supply %></td>
+      <td><%= crypto[0].percent_change_7d %>%</td>
     </tr>
   </table>
 

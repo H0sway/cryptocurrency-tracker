@@ -83,7 +83,7 @@ controller.tracker = (req,res) => {
 //   });
 // };// end of tracker method
 
-controller.show = (req,res) => {
+controller.currency = (req,res) => {
   Currency.findById(req.params.id)
   .then((currency) => {
     axios({
@@ -91,6 +91,7 @@ controller.show = (req,res) => {
       url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
     })
     .then((crypto) => {
+      console.log(crypto.data);
       if (currency.investment_id) {
         Investment.findById(currency.investment_id)
         .then((investment) => {
@@ -117,22 +118,31 @@ controller.show = (req,res) => {
 };
 
 controller.edit = (req,res) => {
-  Investment.findById(req.params.id)
-  .then((investment) => {
-    res.render('tracker/edit', {investment: investment});
+  Currency.findById(req.params.id)
+  .then((currency) => {
+    Investment.findById(currency.investment_id)
+    .then((investment) => {
+      res.render('tracker/edit', {
+        currency: currency,
+        investment: investment,
+      });
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
   })
   .catch((err) => {
-    res.status(500).json(err);
+    res.status(400).json(err);
   });
 };
 
 controller.update = (req,res) => {
-  Investment.update({amount: req.body.amount}, req.params.id)
+  Investment.update({amount: req.body.amount}, req.params.investment_id)
   .then(() => {
-    res.redirect(`/tracker/tracker`);
+    res.redirect(`/tracker/tracker/${req.params.id}`);
   })
   .catch((err) => {
-    res.status(500).json(err);
+    res.status(400).json(err);
   });
 };
 
