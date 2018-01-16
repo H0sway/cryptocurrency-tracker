@@ -10,12 +10,29 @@
     <h1>You must be logged in to access this site</h1>
     <h3>Please input your login details below.</h3>
   </header>
-  <form method="POST" action="/auth/login" class="login">
-    <input name="username" type="text" placeholder="username" required />
-    <input name="password" type="password" placeholder="password" required />
-    <input type="submit" value="Log in!" />
-  </form>
 
-  <a href="/auth/register">Register Here</a>
+  <div class="loginbox">
+    <form method="POST" action="/auth/login" class="login">
+
+      <div class="loginflex">
+        <label for="username">Username:</label>
+        <input name="username" type="text" required />
+      </div>
+
+      <div class="loginflex">
+        <label for="password">Password:</label>
+        <input name="password" type="password" required />
+      </div>
+
+      <div class="loginflex">
+        <input type="submit" value="Hack the Mainframe" />
+      </div>
+    </form>
+  </div>
+
+    <div class="register">
+      <a href="/auth/register">Register Here</a>
+    </div>
+
 </body>
 </html>

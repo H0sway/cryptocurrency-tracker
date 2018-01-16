@@ -4,18 +4,87 @@ body {
   color: #4dffff;
 }
 
+header {
+  margin: 10px auto;
+  font-family: Hack, monospace;
+  background-color: #262626;
+  padding: 15px;
+  border-bottom: 2px solid #00b3b3;
+}
+
+header h1 {
+  font-size: 40px;
+}
+
 h1 {
   margin: 15px auto;
   text-align: center;
+  font-family: 'Boogaloo', cursive;
 }
 
 h3 {
-  margin: 0 auto;
+  margin: 10px auto;
   text-align: center;
 }
 
 a {
   text-decoration: none;
+}
+
+.different {
+  margin: 20px auto;
+  max-height: 120px;
+  max-width: 180px;
+  text-align: center;
+  padding: 10px;
+  border: 3px solid #4dffff;
+  border-radius: 5%;
+  background-color: #cc0099;
+}
+
+.different a {
+  text-decoration: none;
+  color: #001a00;
+}
+
+.loginbox {
+  text-align: center;
+  margin: 20px auto;
+  background-color: #196619;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: flex-start;
+  border: 2px solid #4dffff;
+  max-height: 200px;
+  max-width: 360px
+}
+
+.loginbox input {
+  font-family: Hack, monospace;
+  border-color: #000066;
+  color: #4dffff;
+  background-color: #000066;
+  padding: 4px;
+}
+
+.loginbox input:focus {
+  border-color: #b30000;
+}
+
+.loginflex {
+  margin: 5px;
+}
+
+.register {
+  margin: 5px auto;
+  text-align: center;
+  font-family: Hack, monospace;
+  text-decoration: none;
+}
+
+.register a {
+  color: #4dffff;
 }
 
 .topcryptos {
@@ -27,12 +96,14 @@ a {
 
 .topcryptos th {
   border: 1px solid #4dffff;
+  font-family: Hack, monospace;
   padding: 5px;
 }
 
 .topcryptos td {
   text-align: center;
   border: 1px solid #4dffff;
+  font-family: 'Audiowide', cursive;
   padding: 5px;
 }
 
@@ -53,6 +124,7 @@ a {
 
 .tracker a {
   text-decoration: none;
+  font-family: 'Armata', sans-serif;
   color: #0000cc;
 }
 
@@ -64,22 +136,29 @@ a {
   margin: 15px auto;
   border: 3px solid #4dffff;
   border-collapse: collapse;
+  padding: 15px;
 }
 
 .personal th {
   border: 1px solid #4dffff;
-  padding: 5px;
+  font-family: Hack, monospace;
+  padding: 10px;
 }
 
 .personal td {
   text-align: center;
+  font-family: 'Audiowide', cursive;
   border: 1px solid #4dffff;
   background-color: #000000;
-  padding: 5px;
+  padding: 7px;
 }
 
 .personal td a {
     color: #4dffff;
+}
+
+.personal td a:hover {
+  color: #ff4000;
 }
 
 .personal td:hover {
@@ -108,11 +187,43 @@ a {
 
 .link a {
   color: #33ff33;
+  font-family: 'Armata', sans-serif;
   text-decoration: none;
 }
 
 .link a:hover {
   color: #ccff66;
+}
+
+.add {
+  margin: 60px auto;
+  text-align: center;
+  font-family: Hack, monospace;
+  max-width: 320px;
+  max-height: 200px;
+  border: 4px solid #4dffff;
+  padding: 5px;
+  background-color: #006600;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.addflex {
+  margin: 5px;
+  font-family: Hack, monospace;
+}
+
+.addflex input[type=submit] {
+  border: 1px solid #4dffff;
+  padding: 3px;
+  font-family: Hack, monospace;
+  color: #4dffff;
+  background-color: #006600;
+}
+
+.addflex input:focus {
+  border: 2px solid #ff0000;
 }
 
 .currency {
@@ -123,6 +234,7 @@ a {
 
 .currency th {
   border: 1px solid #4dffff;
+  font-family: Hack, monospace;
   padding: 5px;
 }
 
@@ -130,5 +242,58 @@ a {
   text-align: center;
   border: 1px solid #4dffff;
   background-color: #000000;
+  font-family: 'Audiowide', cursive;
   padding: 5px;
+}
+
+.currency td:hover {
+  background-color: #4d4d4d;
+}
+
+
+.edit {
+  text-align: center;
+  background-color: #267326;
+  margin: 10px auto;
+  border: 1px solid #4dffff;
+  padding: 2px;
+  max-height: 100px;
+  max-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.editflex {
+  margin: 10px;
+}
+
+.editflex input[type=submit] {
+  border: 1px solid #4dffff;
+  padding: 5px;
+  font-family: Hack, monospace;
+  color: #4dffff;
+  background-color: #000066;
+}
+
+.editflex input:focus {
+  border: 2px solid #ff0000;
+}
+
+.delete {
+  text-align: center;
+  margin: 10px auto;
+  border: 1px solid #4dffff;
+  border-radius: 15%;
+  background-color: #000066;
+  padding: 3px;
+  max-height: 50px;
+  max-width: 90px;
+}
+
+.delete input {
+  font-family: Hack, monospace;
+  border-color: #000066;
+  color: #4dffff;
+  background-color: #000066;
 }

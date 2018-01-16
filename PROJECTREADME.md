@@ -32,8 +32,8 @@ Tracking how long it'll take for me to complete my various features.
 ------------------------------------------------|----------|----------------|-------------|
 | Create all the views                          | H        | 2H             | 6H          |
 | Store currencies added by users               | H        | 4H             | 10H         |
-| Show current value of stored currencies       | H        | 8H             | 6H          |
+| Show current value of stored currencies       | H        | 8H             | 8H          |
 | Individual user accounts to track investments | M        | 8H             | 6H          |
-| Style the app                                 | M        | 10H            | 5H          |
+| Style the app                                 | M        | 10H            | 6H          |
 | Page that tracks the top X currencies         | L        | 4H             | 1.5H        |
 | Delete user accounts                          | L        | 3H             | 0H          |

@@ -6,7 +6,10 @@
   <% include ../partials/head %>
 </head>
 <body>
-  <h1>Your CryptoCurrency Investments</h1>
+
+  <% include ../partials/header %>
+
+  <h1>Your Investments</h1>
 
   <div class="links">
     <div class="link">
@@ -20,10 +23,12 @@
   <table class="personal">
     <tr>
       <th>Name</th>
+      <th>Link</th>
     </tr>
     <% currencies.forEach((currency) => { %>
     <tr>
-      <td><a href=" /tracker/tracker/<%=currency.id%> "><%= currency.currency_id %></a></td>
+      <td><%= currency.currency_id %></td>
+      <td><a href=" /tracker/tracker/<%=currency.id%> ">Link!</a></td>
     </tr>
     <% }) %>
   </table>

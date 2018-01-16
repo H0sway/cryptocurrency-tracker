@@ -7,11 +7,13 @@
 </head>
 <body>
 
+  <% include ../partials/header %>
+
   <h1> Your Investment </h1>
 
   <div class="links">
     <div class="link">
-      <a href="/tracker/tracker">Your Crypto Tracker</a>
+      <a href="/tracker/tracker">Back To Tracker</a>
     </div>
     <div class="link">
       <a href="/tracker/tracker/<%= currency.id %>/edit">Edit/Add Investment</a>
@@ -47,9 +49,11 @@
     </tr>
   </table>
 
-  <form action="<%= `/tracker/tracker/${currency.id}?_method=DELETE` %>" method="POST">
-    <input type="submit" value="Delete This" />
-  </form>
+  <div class="delete">
+    <form action="<%= `/tracker/tracker/${currency.id}?_method=DELETE` %>" method="POST">
+      <input type="submit" value="Delete This" />
+    </form>
+  </div>
 
 </body>
 </html>
