@@ -6,6 +6,9 @@
   <% include ../partials/head %>
 </head>
 <body>
+
+  <% include ../partials/header %>
+
   <h1>Add A Currency</h1>
   <h3>Add in the name of which currency you'd like to track. If you'd like, you can include an investment as well.</h3>
 
@@ -18,18 +21,26 @@
     </div>
   </div>
 
-  <form action="/tracker/tracker" method="POST">
-    <label for="currency_id">Crypto Name</label>
-    <input id="currency_id" type="text" name="currency_id"/>
+  <div class="add">
+    <form action="/tracker/tracker" method="POST">
+      <div class="addflex">
+        <label for="currency_id">Name:</label>
+        <input id="currency_id" type="text" name="currency_id"/>
+      </div>
 
-    <br/>
+      <br/>
 
-    <label for="amount">Amount</label>
-    <input id="amount" type="number" step="any" name="amount" value="0" />
+      <div class="addflex">
+        <label for="amount">Amount:</label>
+        <input id="amount" type="number" step="any" name="amount" value="0" />
+      </div>
 
-    <br/>
+      <br/>
 
-    <input type="submit" value="Add New Currency"/>
-  </form>
+      <div class="addflex">
+        <input type="submit" value="Add New Currency"/>
+      </div>
+    </form>
+  </div>
 </body>
 </html>
