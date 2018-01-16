@@ -21,80 +21,88 @@ controller.home = (req,res) => {
 };
 
 controller.tracker = (req,res) => {
-  Currency.findAll()
+  console.log('hit the tracker method', req.user);
+  Currency.findAll(req.user.id)
   .then((currencies) => {
-    console.log('inside currency.findall')
-    if(currencies.length) {
-      currencies.forEach((currency, index) => {
-        console.log('looping', index)
-        axios({
-          method: 'get',
-          url: `https://api.coinmarketcap.com/v1/ticker/${req.params.currency_id}`
-        });
-      })
-      .then((cryptos) => {
-        console.log('inside api call')
-        if (currency.investment_id) {
-          Investment.findAll()
-          .then((investments) => {
-            console.log('inside investments')
-            res.render('tracker/tracker', {
-              cryptos: cryptos.data,
-              currencies: currencies,
-              investments: investments
-            });
-          })
-          .catch((err) => {
-            console.log('inside investments error', err)
-            res.status(500).json(err);
-           });
-        } else {
-          res.render('tracker/tracker', {
-            cryptos: cryptos.data,
-            currencies: currencies
-          });
-        }
-      })
-      .catch((err) => {
-        console.log('inside api error', err)
-        res.status(500).json(err);
-      });
-    } else {
-      console.log('found nothing')
-      res.render('tracker/tracker', {
-        currencies: undefined
-      });
-    }
+    res.render('tracker/tracker', {
+      currencies: currencies,
+    });
   })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
 };
 
-controller.show = (req,res) => {
+controller.currency = (req,res) => {
   Currency.findById(req.params.id)
   .then((currency) => {
     axios({
       method: 'get',
-      url: `https://api.coinmarketcap.com/v1/ticker/${req.params.currency_id}`
-    });
+      url: `https://api.coinmarketcap.com/v1/ticker/${currency.currency_id}`
+    })
+    .then((crypto) => {
+      console.log(crypto.data);
+      if (currency.investment_id) {
+        Investment.findById(currency.investment_id)
+        .then((investment) => {
+          res.render('tracker/currency', {
+            currency: currency,
+            crypto: crypto.data,
+            investment: investment,
+          });
+        })
+        .catch((err) => {
+          console.log('investment error', err)
+        });
+      } else {
+        res.render('tracker/currency', {
+          currency: currency,
+          crypto: crypto.data,
+        })
+      }
+    })
   })
+  .catch((err) => {
+    console.log('currency error', err);
+  });
 };
 
 controller.edit = (req,res) => {
-  Investment.findById(req.params.id)
-  .then((investment) => {
-    res.render('tracker/edit', {investment: investment});
+  Currency.findById(req.params.id)
+  .then((currency) => {
+    Investment.findById(currency.investment_id)
+    .then((investment) => {
+      res.render('tracker/edit', {
+        currency: currency,
+        investment: investment,
+      });
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
   })
   .catch((err) => {
-    res.status(500).json(err);
+    res.status(400).json(err);
   });
 };
 
 controller.update = (req,res) => {
-  Investment.update({amount: req.body.amount}, req.params.id)
-  .then(() => {
-    res.redirect(`/tracker/${req.params.username}`);
+  Currency.findById(req.params.id)
+  .then((currency) => {
+    Investment.update({
+      user_id: req.user.id,
+      currency: currency.currency_id,
+      amount: req.body.amount,
+    }, currency.currency_id)
+    .then(() => {
+      res.redirect(`/tracker/tracker/${req.params.id}`);
+    })
+    .catch((err) => {
+     res.status(400).json(err);
+    });
   })
   .catch((err) => {
-    res.status(500).json(err);
+    res.status(400).json(err);
   });
 };
 
@@ -109,20 +117,22 @@ controller.add = (req,res) => {
     currency: req.body.currency_id,
     amount: req.body.amount
   })
-  .then((currency) => {
+  .then((investment) => {
     Currency.create({
     user_id: req.user.id,
     currency_id: req.body.currency_id,
     investment_id: investment.id
     })
-    .then((investment) => {
+    .then((currency) => {
       res.redirect('/tracker/tracker');
     })
     .catch((err) => {
+      console.log('currency.create error', err)
       res.status(500).json(err);
     });
   })
   .catch((err) => {
+    console.log(err)
     res.status(500).json(err);
   });
 };
@@ -130,8 +140,11 @@ controller.add = (req,res) => {
 controller.destroy = (req,res) => {
   Currency.destroy(req.params.id)
   .then(() => {
-    res.redirect(`/tracker/${req.params.username}`)
+    res.redirect('/tracker/tracker')
   })
+  .catch((err) => {
+    res.status(400).json(err);
+  });
 };
 
 module.exports = controller;

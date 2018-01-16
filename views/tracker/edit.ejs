@@ -6,5 +6,24 @@
   <% include ../partials/head %>
 </head>
 <body>
+  <h1>Edit Your Investment</h1>
+  <h3>Type in the amount you've invested below. We'll save it for you</h3>
+
+  <div class="links">
+    <div class="link">
+      <a href="/tracker/tracker">Your Crypto Tracker</a>
+    </div>
+    <div class="link">
+      <a href="/tracker/tracker/<%= currency.id %>">Back To Currency</a>
+    </div>
+  </div>
+
+  <form action="<%= `/tracker/tracker/${currency.id}?_method=PUT` %>" method="POST">
+    <label for="amount">Amount Invested</label>
+    <input id="amount" type="number" step="any" name="amount" />
+
+    <input type="submit" value="Finished" />
+
+  </form>
 </body>
 </html>
