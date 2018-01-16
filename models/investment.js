@@ -26,9 +26,12 @@ Investment.create = (investment) => {
 Investment.update = (investment, id) => {
   return db.none(`
     UPDATE investments
-    SET amount = $1
-    WHERE id  = $2
-    `,[investment.amount, id]);
+    SET
+    user_id = $1,
+    currency = $2,
+    amount = $3
+    WHERE id  = $4
+    `,[investment.user_id, investment.currency, investment.amount, id]);
 };
 
 Investment.destroy = (id) => {

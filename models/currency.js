@@ -26,7 +26,7 @@ Currency.create = (currency) => {
 Currency.destroy = (id) => {
   return db.none(`
     DELETE FROM currencies WHERE id = $1
-    `);
+    `,[id]);
 };
 
 module.exports = Currency;
